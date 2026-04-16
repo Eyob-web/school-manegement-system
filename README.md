@@ -1,4 +1,4 @@
-# school-manegement-system
+
 # 🎓 EduSmart - School Management System
 
 A comprehensive, role-based School Management System (SMS) built with PHP, MySQL, and modern frontend technologies. EduSmart streamlines academic management for administrators, teachers, and students with an intuitive, futuristic interface.
@@ -52,8 +52,11 @@ A comprehensive, role-based School Management System (SMS) built with PHP, MySQL
 ## 📁 Project Structure
 edusmart-sms/
 ├── admin_dash.php # Admin dashboard
+
 ├── manage_users.php # User approval & management
+
 ├── manage_classes.php # CRUD operations for classes
+
 ├── post_notice.php # Announcement publisher
 ├── teacher_dash.php # Teacher dashboard
 ├── my_classes.php # Teacher's assigned classes
@@ -96,19 +99,3 @@ The system uses a MySQL database named `sms_db` with the following main tables:
 | `notices` | Announcements with expiration dates |
 
 > **Note:** Run the provided `sms_db.sql` script to create all tables with sample data.
-
----
-
-## 🚀 Installation Guide
-
-### Prerequisites
-- XAMPP / WAMP / LAMP stack
-- PHP 7.4 or higher
-- MySQL 5.7 or higher
-
-### Steps
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/edusmart-sms.git
-   cd edusmart-sms
