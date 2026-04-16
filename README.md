@@ -58,25 +58,45 @@ edusmart-sms/
 ├── manage_classes.php # CRUD operations for classes
 
 ├── post_notice.php # Announcement publisher
+
 ├── teacher_dash.php # Teacher dashboard
+
 ├── my_classes.php # Teacher's assigned classes
+
 ├── upload_assignment.php # Assignment upload with files
+
 ├── enter_grades.php # Grade entry interface
+
 ├── attendance.php # Attendance marking
+
 ├── student_dash.php # Student dashboard
+
 ├── view_grades.php # Student grade viewer
+
 ├── view_assignments.php # Assignment submission
+
 ├── view_schedule.php # Weekly timetable
+
 ├── view_notices.php # Notice viewer
+
 ├── student_profile.php # Profile management
+
 ├── login.php # Authentication
+
 ├── signup.php # Registration (pending approval)
+
 ├── logout.php # Session destroy
+
 ├── config.php # Database configuration
+
 ├── student.css # Unified student styling
+
 ├── log.css # Authentication styling
+
 ├── index.html # Landing page
+
 ├── uploads/ # Assignment & submission files
+
 └── sms_db.sql # Database schema (create this)
 
 
