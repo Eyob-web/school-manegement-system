@@ -119,3 +119,28 @@ The system uses a MySQL database named `sms_db` with the following main tables:
 | `notices` | Announcements with expiration dates |
 
 > **Note:** Run the provided `sms_db.sql` script to create all tables with sample data.
+>
+> 
+---
+
+## Additional Files to Include (Optional)
+
+You can also add these files to your GitHub repository for completeness:
+
+### `CONTRIBUTING.md`
+```markdown
+# Contributing to EduSmart
+
+1. Report bugs via Issues
+2. Suggest features via Discussions
+3. Follow PSR coding standards
+4. Test before submitting PRs
+
+# Changelog
+
+## [1.0.0] - 2026-04-16
+- Initial release
+- Core functionality for admin, teacher, student
+- Assignment submission system
+- Grade management
+- Attendance tracking
