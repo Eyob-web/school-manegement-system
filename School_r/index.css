@@ -1,0 +1,249 @@
+
+/* ========== ROOT SYSTEM ========== */
+:root {
+    --primary: #2563eb;
+    --secondary: #0f172a;
+    --accent: #22c55e;
+    --light: #f8fafc;
+    --gray: #64748b;
+    --card: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+    --radius: 14px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+body {
+    background: var(--light);
+    color: var(--secondary);
+    line-height: 1.6;
+}
+
+/* ========== HEADER ========== */
+header {
+    background: var(--secondary);
+    color: white;
+    padding: 10px 20px;
+}
+
+.info-desk {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.contact p {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 14px;
+}
+
+.portal-links a {
+    color: white;
+    margin-left: 10px;
+    text-decoration: none;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.portal-links a:hover {
+    background: var(--primary);
+}
+
+/* ========== NAVBAR ========== */
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    background: white;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo span {
+    color: var(--primary);
+}
+
+.nav-links ul {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--secondary);
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: var(--primary);
+}
+
+/* Mobile menu */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+/* ========== HERO ========== */
+.sms-hero {
+    height: 85vh;
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://images.unsplash.com/photo-1523240795612-9a054b0db644') center/cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    padding: 20px;
+}
+
+.sms-hero h1 {
+    font-size: 42px;
+}
+
+.text-accent {
+    color: var(--accent);
+}
+
+.cta-group {
+    margin-top: 20px;
+}
+
+.btn-main, .btn-outline {
+    padding: 10px 18px;
+    border-radius: 10px;
+    text-decoration: none;
+    margin: 5px;
+    display: inline-block;
+    transition: 0.3s;
+}
+
+.btn-main {
+    background: var(--primary);
+    color: white;
+}
+
+.btn-outline {
+    border: 2px solid white;
+    color: white;
+}
+
+.btn-main:hover {
+    background: #1d4ed8;
+}
+
+.btn-outline:hover {
+    background: white;
+    color: black;
+}
+
+/* ========== SECTIONS ========== */
+.section-title {
+    text-align: center;
+    margin: 50px 0 20px;
+    font-size: 28px;
+}
+
+/* ========== MODULES ========== */
+.module-grid,
+.feature-grid,
+.testimonial-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.module-card,
+.feature-card,
+.testimonial-card {
+    background: var(--card);
+    padding: 20px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+
+.module-card:hover,
+.feature-card:hover,
+.testimonial-card:hover {
+    transform: translateY(-8px);
+}
+
+/* ========== STATS ========== */
+.stats-ribbon {
+    display: flex;
+    justify-content: space-around;
+    background: var(--primary);
+    color: white;
+    padding: 30px 10px;
+    flex-wrap: wrap;
+}
+
+.stat-item h3 {
+    font-size: 28px;
+}
+
+/* ========== FEATURES ========== */
+.features-section {
+    padding: 40px 20px;
+}
+
+/* ========== SEARCH BOX ========== */
+.search-box input {
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background: var(--secondary);
+    color: white;
+    margin-top: 40px;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .nav-links ul {
+        flex-direction: column;
+        display: none;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 20px;
+        padding: 15px;
+        box-shadow: var(--shadow);
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .sms-hero h1 {
+        font-size: 28px;
+    }
+
+    .stats-ribbon {
+        flex-direction: column;
+        text-align: center;
+        gap: 15px;
+    }
+}

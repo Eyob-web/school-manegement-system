@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>EduSmart | Next-Gen School Management System</title>
+    <!-- Google Fonts & Smooth Scroll -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #0b0f1c;
+            color: #f1f5f9;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+
+        /* custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0f172a;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #38bdf8;
+            border-radius: 12px;
+        }
+
+        /* reusable container */
+        .container {
+            width: 90%;
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        /* animated gradient background for hero + floating elements */
+        .hero {
+            position: relative;
+            background: radial-gradient(circle at 10% 20%, #0c1b33, #020617);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: radial-gradient(circle, rgba(56,189,248,0.08) 0%, rgba(2,6,23,0) 70%);
+            animation: rotateGlow 28s infinite linear;
+            pointer-events: none;
+        }
+
+        @keyframes rotateGlow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* floating particles animation */
+        .floating-shape {
+            position: absolute;
+            background: rgba(56, 189, 248, 0.1);
+            filter: blur(40px);
+            border-radius: 50%;
+            z-index: 0;
+            animation: floatUpDown 10s infinite alternate ease-in-out;
+        }
+
+        @keyframes floatUpDown {
+            0% { transform: translateY(0px) translateX(0px); }
+            100% { transform: translateY(-40px) translateX(20px); }
+        }
+
+        /* Top Bar refined */
+        .topbar {
+            background: #020617e6;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+            font-size: 0.85rem;
+            padding: 10px 0;
+            position: relative;
+            z-index: 20;
+        }
+
+        .topbar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contact-info i {
+            color: #38bdf8;
+            margin-right: 6px;
+        }
+
+        .top-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            margin-left: 12px;
+            padding: 5px 14px;
+            border-radius: 40px;
+            background: rgba(56, 189, 248, 0.1);
+            transition: all 0.25s ease;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        .top-links a:hover {
+            background: #38bdf8;
+            color: #020617;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 12px rgba(56,189,248,0.3);
+        }
+
+        /* Navbar glass morphism */
+        .navbar {
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(16px);
+            position: sticky;
+            top: 0;
+            z-index: 200;
+            border-bottom: 1px solid rgba(56, 189, 248, 0.25);
+            transition: all 0.3s;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 14px 0;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #ffffff, #38bdf8);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            letter-spacing: -0.5px;
+        }
+        .logo span {
+            background: linear-gradient(135deg, #38bdf8, #a5f3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #cbd5e6;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -6px;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: #38bdf8;
+            transition: width 0.3s ease;
+            border-radius: 3px;
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #ffffff;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.8rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            color: white;
+        }
+
+        /* hero content */
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            text-align: center;
+            padding: 100px 20px 120px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            background: linear-gradient(to right, #ffffff, #90e0ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+            animation: fadeSlideUp 0.8s ease-out;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-top: 20px;
+            color: #b9c7db;
+            animation: fadeSlideUp 0.9s ease-out;
+        }
+
+        @keyframes fadeSlideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-buttons {
+            margin-top: 32px;
+            display: flex;
+            gap: 18px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1rem;
+        }
+
+        .primary {
+            background: linear-gradient(95deg, #38bdf8, #2b9ed4);
+            color: #0a0f1f;
+            box-shadow: 0 8px 18px rgba(56,189,248,0.3);
+            border: none;
+        }
+
+        .primary:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 28px rgba(56,189,248,0.4);
+            background: linear-gradient(95deg, #4cc9ff, #38bdf8);
+        }
+
+        .outline {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(4px);
+            border: 1px solid #38bdf8;
+            color: #38bdf8;
+        }
+
+        .outline:hover {
+            background: #38bdf8;
+            color: #020617;
+            transform: translateY(-4px);
+            border-color: transparent;
+        }
+
+        /* section styles */
+        .section {
+            padding: 80px 5%;
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2.4rem;
+            font-weight: 700;
+            margin-bottom: 50px;
+            background: linear-gradient(135deg, #e2e8f0, #a0c4ff);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 32px;
+        }
+
+        .card {
+            background: rgba(20, 30, 55, 0.65);
+            backdrop-filter: blur(8px);
+            border-radius: 28px;
+            padding: 28px 22px;
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            transition: all 0.35s ease;
+            cursor: default;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #38bdf8;
+            background: rgba(30, 45, 75, 0.75);
+            box-shadow: 0 25px 35px -12px rgba(56,189,248,0.2);
+        }
+
+        .card i {
+            font-size: 2.5rem;
+            color: #38bdf8;
+            margin-bottom: 16px;
+            display: inline-block;
+        }
+
+        .card h3 {
+            font-size: 1.6rem;
+            margin: 12px 0 8px;
+        }
+
+        .card p {
+            color: #a0b3d9;
+            line-height: 1.5;
+        }
+
+        /* stats section with animated counters */
+        .stats-section {
+            background: linear-gradient(145deg, #030712, #0c1428);
+            padding: 60px 20px;
+            border-radius: 60px 60px 0 0;
+            margin-top: 20px;
+        }
+
+        .stats-grid {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 40px;
+            text-align: center;
+        }
+
+        .stat-item h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, #fff, #38bdf8);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .stat-item p {
+            font-size: 1rem;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: #8aa2d0;
+        }
+
+        /* testimonials special */
+        .testimonial-card {
+            background: rgba(15, 25, 45, 0.7);
+            backdrop-filter: blur(12px);
+            border-radius: 32px;
+            padding: 32px;
+            transition: 0.3s;
+            border-left: 4px solid #38bdf8;
+        }
+
+        .testimonial-card i {
+            font-size: 2rem;
+            color: #38bdf8;
+            opacity: 0.7;
+        }
+
+        .testimonial-card p {
+            font-style: italic;
+            margin: 16px 0;
+            font-size: 1rem;
+        }
+
+        .testimonial-card span {
+            font-weight: 600;
+            color: #cbd5e6;
+        }
+
+        /* footer */
+        .footer {
+            background: #020617;
+            padding: 48px 0 32px;
+            text-align: center;
+            border-top: 1px solid rgba(56,189,248,0.2);
+        }
+
+        .social-icons a {
+            color: #94a3b8;
+            font-size: 1.4rem;
+            margin: 0 12px;
+            transition: 0.2s;
+            display: inline-block;
+        }
+
+        .social-icons a:hover {
+            color: #38bdf8;
+            transform: translateY(-3px);
+        }
+
+        /* responsive */
+        @media (max-width: 900px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            .title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: absolute;
+                top: 72px;
+                right: 5%;
+                background: rgba(10, 18, 35, 0.96);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                width: 220px;
+                padding: 20px;
+                border-radius: 28px;
+                gap: 1.2rem;
+                display: none;
+                border: 1px solid rgba(56,189,248,0.4);
+                z-index: 200;
+            }
+            .nav-links.show {
+                display: flex;
+            }
+            .menu-toggle {
+                display: block;
+            }
+            .topbar-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-content {
+                padding: 70px 20px;
+            }
+            .stats-grid {
+                flex-direction: column;
+                gap: 25px;
+            }
+        }
+
+        /* animated entrance on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.7s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- TOP BAR -->
+<div class="topbar">
+    <div class="container topbar-content">
+        <div class="contact-info">
+            <i class="fas fa-phone-alt"></i> +251-916-253-428 &nbsp;|&nbsp;
+            <i class="far fa-envelope"></i> support@edusmart.com
+        </div>
+        <div class="top-links">
+            <a href="login.php"><i class="fas fa-user-graduate"></i> Student Log In</a>
+            <a href="login.php"><i class="fas fa-chalkboard-user"></i> Teachers Staff Log In</a>
+            <a href="login.php"><i class="fas fa-lock"></i> Admin Log In</a>
+        </div>
+    </div>
+</div>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+    <div class="container nav-content">
+        <h2 class="logo">Edu<span>Smart</span></h2>
+        <div class="menu-toggle" id="menu-toggle">
+            <i class="fas fa-bars"></i>
+        </div>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home" class="active">Dashboard</a></li>
+            <li><a href="#features">Academics</a></li>
+            <li><a href="#modules">Admissions</a></li>
+            <li><a href="#">Exams</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- HERO SECTION with floating particles -->
+<section id="home" class="hero">
+    <div class="floating-shape" style="width: 300px; height: 300px; top: -80px; left: -100px; animation-duration: 18s;"></div>
+    <div class="floating-shape" style="width: 200px; height: 200px; bottom: 20px; right: -50px; animation-duration: 22s; background: rgba(56,189,248,0.05);"></div>
+    <div class="floating-shape" style="width: 150px; height: 150px; top: 40%; left: 70%; animation-duration: 14s;"></div>
+    <div class="hero-content">
+        <h1>Smart Platform for <span>Academic Excellence</span></h1>
+        <p>Revolutionize student management, real-time analytics, automated grading, and seamless communication — all in one intelligent ecosystem.</p>
+        <div class="hero-buttons">
+            <a href="#features" class="btn primary"><i class="fas fa-rocket"></i> Explore Features</a>
+            <a href="#" class="btn outline"><i class="fas fa-calendar-check"></i> Get Started</a>
+        </div>
+    </div>
+</section>
+
+<!-- MODULES CARDS (capabilities) -->
+<section class="section reveal" id="modules">
+    <h2 class="title">⚡ System Capabilities</h2>
+    <div class="grid">
+        <div class="card"><i class="fas fa-chart-line"></i><h3>Dashboard Analytics</h3><p>Real-time insights, attendance heatmaps & performance trends.</p></div>
+        <div class="card"><i class="fas fa-file-alt"></i><h3>Exam Management</h3><p>Online exams, automated grading, and detailed result analytics.</p></div>
+        <div class="card"><i class="fas fa-fingerprint"></i><h3>Attendance Tracking</h3><p>Biometric & QR based attendance with instant reports.</p></div>
+        <div class="card"><i class="fas fa-shield-alt"></i><h3>Secure Role Access</h3><p>Granular permissions for admin, teachers, students, and parents.</p></div>
+    </div>
+</section>
+
+<!-- STATS WITH DYNAMIC COUNTER (animated on view) -->
+<section class="stats-section reveal">
+    <div class="stats-grid">
+        <div class="stat-item">
+            <h2 class="counter" data-target="15800">0</h2>
+            <p><i class="fas fa-users"></i> Active Students</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="520">0</h2>
+            <p><i class="fas fa-chalkboard"></i> Expert Teachers</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="98">0</h2>
+            <p><i class="fas fa-smile"></i> Satisfaction Rate %</p>
+        </div>
+        <div class="stat-item">
+            <h2 class="counter" data-target="24">0</h2>
+            <p><i class="fas fa-clock"></i> 24/7 Support</p>
+        </div>
+    </div>
+</section>
+
+<!-- FEATURE MODULES (Detailed) -->
+<section id="features" class="section reveal">
+    <h2 class="title">📌 Management Modules</h2>
+    <div class="grid">
+        <div class="card"><i class="fas fa-id-card"></i><h3>Student Info Hub</h3><p>Profiles, behavior tracking, medical records & guardian access.</p></div>
+        <div class="card"><i class="fas fa-book-open"></i><h3>Curriculum & Grading</h3><p>Custom grading scales, report cards, and skill-based assessment.</p></div>
+        <div class="card"><i class="fas fa-coins"></i><h3>Fee Management</h3><p>Automated invoicing, payment gateway & scholarship tracking.</p></div>
+        <div class="card"><i class="fas fa-bell"></i><h3>Smart Communication</h3><p>SMS/email alerts, parent portal, and real-time announcements.</p></div>
+    </div>
+</section>
+
+<!-- TESTIMONIALS (animated glass) -->
+<section class="section reveal" style="background: radial-gradient(ellipse at 30% 40%, #0b1424, #020617); border-radius: 60px; margin: 20px 5%;">
+    <h2 class="title light" style="color: white; background: none; -webkit-background-clip: unset; color: white;">💬 Trusted by Educators</h2>
+    <div class="grid" style="margin-top: 20px;">
+        <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <p>"EduSmart revolutionized our school administration. Attendance & exam automation saved 20+ hours weekly. Truly next-gen."</p>
+            <span>— Dr. Mekdes A., Principal</span>
+        </div>
+        <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <p>"The most intuitive platform I've used. Parents love real-time grade updates, and the interface is gorgeous."</p>
+            <span>— Samuel T., Head of Academics</span>
+        </div>
+        <div class="testimonial-card">
+            <i class="fas fa-quote-left"></i>
+            <p>"From fee tracking to behavior reports, everything in one dashboard. Our digital transformation is complete."</p>
+            <span>— Hanna G., IT Director</span>
+        </div>
+    </div>
+</section>
+
+<!-- CTA SECTION with animation -->
+<section class="section reveal" style="text-align: center;">
+    <div class="card" style="max-width: 700px; margin: 0 auto; background: linear-gradient(135deg, #112240, #0a0f2a);">
+        <i class="fas fa-gem" style="font-size: 3rem;"></i>
+        <h3 style="font-size: 2rem;">Ready to modernize your institution?</h3>
+        <p>Join 500+ schools already using EduSmart for smarter education management.</p>
+        <a href="#" class="btn primary" style="margin-top: 20px;"><i class="fas fa-arrow-right"></i> Request Demo</a>
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+    <div class="container">
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
+        <p style="margin-top: 24px;">© 2026 EduSmart SMS | Developed by Eyob Tsegaye</p>
+        <p style="margin-top: 8px; font-size: 0.85rem;">Addis Ababa, Ethiopia | Empowering Education Through Innovation</p>
+    </div>
+</footer>
+
+<script>
+    // mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const navLinks = document.getElementById('navLinks');
+    if(menuToggle) {
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('show');
+        });
+    }
+
+    // close mobile menu on link click
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            navLinks.classList.remove('show');
+        });
+    });
+
+    // reveal on scroll animation
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // Counter animation with number increment
+    const counters = document.querySelectorAll('.counter');
+    const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if(entry.isIntersecting) {
+                const counterEl = entry.target;
+                const target = parseInt(counterEl.getAttribute('data-target'));
+                let current = 0;
+                const increment = target / 80;
+                const updateCounter = () => {
+                    current += increment;
+                    if(current < target) {
+                        counterEl.innerText = Math.floor(current);
+                        requestAnimationFrame(updateCounter);
+                    } else {
+                        counterEl.innerText = target;
+                    }
+                };
+                updateCounter();
+                counterObserver.unobserve(counterEl);
+            }
+        });
+    }, { threshold: 0.5 });
+    counters.forEach(c => counterObserver.observe(c));
+
+    // smooth active highlight while scrolling
+    const sections = document.querySelectorAll("section[id], #home, #features, #modules");
+    const navItems = document.querySelectorAll(".nav-links a");
+    window.addEventListener("scroll", () => {
+        let current = "";
+        const scrollPos = window.scrollY + 120;
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.clientHeight;
+            if(scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+                current = section.getAttribute("id");
+            }
+        });
+        navItems.forEach(link => {
+            link.classList.remove("active");
+            const href = link.getAttribute("href").substring(1);
+            if(href === current) {
+                link.classList.add("active");
+            } else if(current === "" && link.getAttribute("href") === "#") {
+                link.classList.add("active");
+            }
+        });
+        if(window.scrollY < 100) {
+            document.querySelector(".nav-links a[href='#']")?.classList.add("active");
+        }
+    });
+
+    // small additional dynamic hover and card animations
+    const allCards = document.querySelectorAll('.card, .testimonial-card');
+    allCards.forEach(card => {
+        card.addEventListener('mouseenter', (e) => {
+            card.style.transition = 'all 0.2s ease';
+        });
+    });
+</script>
+</body>
+</html>
