@@ -51,53 +51,53 @@ A comprehensive, role-based School Management System (SMS) built with PHP, MySQL
 
 ## 📁 Project Structure
 edusmart-sms/
-├── admin_dash.php # Admin dashboard
+admin_dash.php # Admin dashboard
 
-├── manage_users.php # User approval & management
+manage_users.php # User approval & management
 
-├── manage_classes.php # CRUD operations for classes
+manage_classes.php # CRUD operations for classes
 
-├── post_notice.php # Announcement publisher
+post_notice.php # Announcement publisher
 
-├── teacher_dash.php # Teacher dashboard
+teacher_dash.php # Teacher dashboard
 
-├── my_classes.php # Teacher's assigned classes
+my_classes.php # Teacher's assigned classes
 
-├── upload_assignment.php # Assignment upload with files
+upload_assignment.php # Assignment upload with files
 
-├── enter_grades.php # Grade entry interface
+enter_grades.php # Grade entry interface
 
-├── attendance.php # Attendance marking
+attendance.php # Attendance marking
 
-├── student_dash.php # Student dashboard
+student_dash.php # Student dashboard
 
-├── view_grades.php # Student grade viewer
+view_grades.php # Student grade viewer
 
-├── view_assignments.php # Assignment submission
+view_assignments.php # Assignment submission
 
-├── view_schedule.php # Weekly timetable
+view_schedule.php # Weekly timetable
 
-├── view_notices.php # Notice viewer
+view_notices.php # Notice viewer
 
-├── student_profile.php # Profile management
+student_profile.php # Profile management
 
-├── login.php # Authentication
+login.php # Authentication
 
-├── signup.php # Registration (pending approval)
+signup.php # Registration (pending approval)
 
-├── logout.php # Session destroy
+logout.php # Session destroy
 
-├── config.php # Database configuration
+config.php # Database configuration
 
-├── student.css # Unified student styling
+student.css # Unified student styling
 
-├── log.css # Authentication styling
+log.css # Authentication styling
 
-├── index.html # Landing page
+index.html # Landing page
 
-├── uploads/ # Assignment & submission files
+uploads/ # Assignment & submission files
 
-└── sms_db.sql # Database schema (create this)
+sms_db.sql # Database schema (create this)
 
 
 ---
